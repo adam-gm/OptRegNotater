@@ -1,0 +1,123 @@
+\section{Week 3}
+
+\subsection{Assignments}
+\begin{itemize}
+    \item Exercises, 7/10 approval required
+    \item Helicopter lab
+    \item Matlab assessments
+\end{itemize}
+
+
+\subsection{Grading}
+\begin{itemize}
+    \item Final exam: 80\%
+    \item Matlab assessments: 20\%
+\end{itemize}
+
+
+\subsection{Course material}
+\begin{itemize}
+    \item Numerical Optimization, J.Nocedal and S. J Wright, 2nd ed.
+    \item Errata on BB.
+    \item Note on Merging Optimization and Control, B. Foss and T.A. Heirung.
+    \item Note on Matrix Calculus, T.A. Heirung.
+\end{itemize}
+
+\subsection{Motivation}
+Optimization: Find best solution to a given task (mathematical problem).
+For the non general problems numerical techniques must be used.
+Applied mathematics built on:
+\begin{itemize}
+    \item Convexity and non-convexity
+    \item Global vs. local solution
+    \item Constrained vs. unconstrained problems
+    \item Feasible set
+\end{itemize}
+
+Typical application for Optimization:
+\begin{itemize}
+    \item Autonomous vehicles
+    \item Power plants
+    \item Oil rigs
+    \item Machine learning
+    \item Finance
+\end{itemize}
+
+Minimization and Maximization, convention this course is for minimization
+Maximizing f(x) will be seen as minimizing -f(x).
+\begin{equation}
+        \min_{x \in \mathbb{R}} f(x)
+\end{equation}
+
+What characterizes an optimum?
+\begin{itemize}
+\item \[\min_{x \in \mathbb{R^n}} f(x)\]
+\item \[f \in \mathbb{C{^2}}\]
+\item \[ \frac{d}{dx} f(x*) = 0\]
+\item \[ \frac{d^2}{dx^2} f(x*) > 0\]
+\end{itemize}
+
+\subsection{(Un)Constrained Optimization}
+
+Constraints are mathematical inequalities for the variables $x_n$ for the desired task.
+
+Unconstrained:
+\begin{itemize}
+    \item \[\min_{x \in \mathbb{R^n}} f(x)\]
+\end{itemize}
+
+Constrained:
+\begin{itemize}
+    \item \[\min_{x \in \mathbb{R^n}} f(x) s.t. C_i(x) = 0, i \in \mathbb{\epsilon} C_i(x)>=0, i \in \mathbb{I}\].
+    \item \[C_i(x)\] constrained function
+    \item $\epsilon$: Equality constraint
+    \item $I$: Inequality constraint
+\end{itemize}
+
+Feasible set:
+\begin{itemize}
+    \item \[\Omega = {x \in \mathbb{R^n} s.t. C_i(x) = } \]
+\end{itemize}
+
+\subsection{Linear programming}
+\begin{equation}
+    \min_{x \in \mathbb{R} c^Tx s.t.}
+        \left\{ \begin{aligned}
+            a_i^T x = b_i , i \in \epsilon \\
+            a_i^Tx \geq b_i, i \in I
+        \end{aligned}
+        \right.
+\end{equation}
+
+\subsubsection{Farmer example, find  max profit or min neg profit}
+
+\subsection{Quadratic programming}
+\begin{equation}
+    \min{x \frac{1}{2}x^TGx + c^Tx s.t. \begin{aligned}
+        a_i^T x = b_i , i \in \epsilon \\
+        a_i^Tx >= b_i, i \in I \\
+        \end{aligned}}
+\end{equation}
+
+\subsection{Convexity}
+Convex set: A set is convex if
+\begin{equation}
+    x,y \in \mathbb{S} if \alpha x + (1-\alpha)y \in \mathbb{S}, \forall \alpha \in [0,1]
+\end{equation}
+
+Convex function: f:S -> R is a convex function if S is convex and
+$every x,y \in \mathbb{S} : f(\alpha x + (1-\alpha)y <= \alpha f(x) + (1-\alpha)f(y) , \forall \alpha \in [0,1])$
+"A line from point x to y should be below the function from f(x) to f(y)
+
+An optimization problem is convex if
+ \begin{itemize}
+    \item f(x) is a convex function
+    \item The feasible set is a convex set
+ \end{itemize}
+
+\subsubsection{Local and global solutions}
+x* is a global solution if $f(x*) <= f(x) all x \in\Omega$.
+Let N be a neighborhood of x:
+x* is a local solution if $f(x*) <= f(x) \forall x \in N \subseteq \Omega$
+
+Omega is the set of all x values which fullfill the constraints.
