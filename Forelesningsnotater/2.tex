@@ -1,0 +1,54 @@
+\section{Week 3}
+
+\subsection{Gradient}
+$\nabla f = [\frac{\partial f}{\partial x1}, \frac{\partial f}{\partial x2}]$
+
+
+\subsection{Hessian}
+\begin{equation}
+   \nabla^2 f(x) = \begin{bmatrix}
+    \frac{\delta f}{\delta x_1^2} & \frac{\delta f}{\delta x_1 x_2} & \cdots & \frac{\delta f}{\delta x_1 x_n} \\
+    \frac{\delta f}{\delta x_1 x_2} & \frac{\delta f}{\delta x_2^2} & \cdots & \frac{\delta f}{\delta x_2 x_n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \frac{\delta f}{\delta x_1 x_n} & \frac{\delta f}{\delta x_2 x_n} & \cdots & \frac{\delta f}{\delta x_n^2}
+   \end{bmatrix}
+\end{equation}
+\subsection{Lagrangian}
+For constrained optimization problems:
+$\mathcal{L}(x,\lambda) = f(x) - \sum_{i \in \epsilon \cup I} \lambda_i c_i(x)$
+\subsection{KKT Conditions}
+If x* is a local solution and LICQ holds, then there exist $\lambda*$ such that:
+\begin{itemize}
+    \item $\nabla_x \mathcal{L}(x*,\lambda*) = 0$
+    \item $c_i(x^*) = 0, \forall i \in \mathcal{E}$
+    \item $c_i(x^*) \geq 0, \forall i \in \mathcal{I}$
+\end{itemize}
+
+\subsection{Proof multipliers are shadow prices}
+Consider constrained optimization problem: $min x f(x) s.t. c(x) \geq 0$
+KKT stationarity: $\nabla f(x^*) = \lambda^* \nabla c(x^*)$ assume constraint active, $c(x^*) = 0$.
+Relax constraint: $min x f(x) s.t. c(x) \geq -\epsilon, \epsilon>0$
+New solution: $x^*(\epsilon) with c(x^*(\epsilon))=-\epsilon$
+
+$f(x^*(\epsilon))-f(x^*) = \nabla f(x^*)^T (x*(\epsilon)-x^*)$
+$= \lambda* \nabla c(x^*)^T (x^*(\epsilon)-x^*) = \lambda^*(c(x^*(\epsilon))-c(x^*)) = -\lambda^* \epsilon$
+
+\subsection{Tangent cone}
+The tangent cone to a set $\Omega$ at a point x $\in \Omega$, denoted by $T_\Omega (x)$, consist of the limits of all secant rays which originate
+at x and pass through a range of points $p_i \in \Omega - {x}$ which converges to x.
+A Tangent Cone is a geometric description of the feasible directions
+\subsection{Active set}
+$\mathcal{A} (x) = \mathcal{E} \cup { i \in \mathcal{I}\|c_i(x) = 0}$
+The active set contains indices of the constraints which are equal 0 for a given point x.
+
+\subsection{Linearized feasible directions}
+Given a feasible point x and the active constraint set $\mathcal{A} (x)$, the set of linearized feasible directions $\mathcal{F}(x)$ is 
+\begin{equation}
+    \mathcal{F}(x) = \left\{ 
+        \begin{aligned}
+        d^T\nabla c_i(x)=0, \forall i \in \mathcal{E} \\
+        d^T\nabla c_i(x)=0, \forall i \in \mathcal{A}(x) \cap \mathcal{I}
+    \end{aligned}
+    \right.
+\end{equation}
+

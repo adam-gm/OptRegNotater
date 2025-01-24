@@ -57,6 +57,27 @@ What characterizes an optimum?
 \item \[ \frac{d^2}{dx^2} f(x*) > 0\]
 \end{itemize}
 
+To make use of optimization, must define an objective which is a quantitative
+measure of the performance of a system:
+\begin{itemize}
+    \item profit
+    \item time
+    \item energy
+    \item or any specific quantity
+\end{itemize}
+Objectives depends on variables, and the goal is to find values  of the variables that 
+optimize the objective. The variables are often constrained or bounded by some way.
+
+Modeling defines formulating an objective, variables and constraints for a given taks.
+There after an optimization algorithm can be defined, for example in machine learning minimizing MSE.
+
+\begin{itemize}
+    \item x is the vector of variables
+    \item f is the objective function of x returning a scalar which we want to minimize
+    \item $c_i$ are constraint functions of x returning a scalar and defines equations or inequalities that the unknown vector x must satisfy.
+\end{itemize}
+
+
 \subsection{(Un)Constrained Optimization}
 
 Constraints are mathematical inequalities for the variables $x_n$ for the desired task.
