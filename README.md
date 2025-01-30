@@ -1,2 +1,4 @@
 # OptRegNotater
-Forelesningsnotater
+Notes
+Assignments
+
