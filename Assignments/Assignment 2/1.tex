@@ -1,0 +1,206 @@
+\section{Problem 1: LP and KKT conditions}
+
+\subsection{1a}
+\begin{subequations}
+    \begin{align}
+        \min_x c^T x s.t. Ax=b, x\geq 0 \\ 
+        c \in \mathbb{R}^n, x \in \mathbb{R}^n, A \in \mathbb{R}^{mxn}
+    \end{align}
+\end{subequations}
+
+For $x^*$ to be a solution there exist $\lambda and s s.t.$ these conditions hold: 
+\begin{subequations}
+    \begin{align}
+        \mathcal{L}(x,\lambda,s) = c^T x - \lambda^T(Ax-b)-s^T x \\ 
+        \nabla_x \mathcal{L} = c - A^T \lambda -s = 0=> A^T \lambda + s = c \\ 
+        Ax = b \\ 
+        x \geq 0 \\ 
+        s \geq 0 \\ 
+        x_i s_i = 0
+    \end{align}
+\end{subequations}
+\subsection{1b}
+\begin{subequations}
+    \begin{align}
+        f(\alpha x + (1-\alpha)y) \leq \alpha f(x)+(1-\alpha)f(y) , \forall \alpha \in [0,1] \\ 
+        f(x) = c^T x \\ 
+        c^T (\alpha x + (1-\alpha)y) \leq \alpha c^T x+(1-\alpha)c^Ty \\ 
+        f(\alpha x + (1-\alpha)y) \leq \alpha f(x)+(1-\alpha)f(y)
+    \end{align}
+\end{subequations}
+
+\section{Problem 2:  Linear programming problem}
+\subsection{2a}
+Objective function: maximize profit, minimize negative profit. Constraints refer to $x\geq 0$ and the time limits $Ax=b$.
+\begin{subequations}
+    \begin{align}
+        f(x) = -c^T x \\ 
+        x \in \mathbb{R}^3 ref [R,S,T]^T \\ 
+        c = \begin{bmatrix}
+            100 \\ 75 \\ 55
+        \end{bmatrix} \\ 
+        A = \begin{bmatrix}
+            3 & 2 & 1 \\ 
+            2 & 2 & 3
+        \end{bmatrix} \\ 
+        b = \begin{bmatrix}
+            7200 \\ 
+            6000
+        \end{bmatrix}
+    \end{align}
+\end{subequations}
+\subsection{2b}
+Because the A matrix is 2x3 and b is 2x1, we can set one of the x values to zero and keep 2 solveable equations.
+
+\begin{subequations}
+    \begin{align}
+        Ax=b, x=[x_1,x_2,0]^T \\ 
+        \begin{bmatrix}
+            3 & 2 & 1 \\ 
+            2 & 2 & 3
+        \end{bmatrix}\begin{bmatrix}
+            x_1\\x_2\\0
+        \end{bmatrix}=\begin{bmatrix}
+            7200\\6000
+        \end{bmatrix}\\ 
+        Make A 2x2 and x 2x1\\ 
+        \begin{bmatrix}
+            x_1 \\ x_2
+        \end{bmatrix} = A^{-1}b \\ 
+        x = \begin{bmatrix}
+            1 & -1 \\ 
+            -1 & 3/2
+        \end{bmatrix}\begin{bmatrix}
+            7200\\6000
+        \end{bmatrix}=\begin{bmatrix}
+            1200\\1800
+        \end{bmatrix}
+    \end{align}
+\end{subequations}
+
+This gives basic feasible point $x=[1200, 1800, 0]^T$
+
+Set $x_2=0$:
+\begin{subequations}
+    \begin{align}
+        \begin{bmatrix}
+            3 & 1\\ 
+            2 & 3
+        \end{bmatrix}\begin{bmatrix}
+            x_1 \\ x_3
+        \end{bmatrix}=\begin{bmatrix}
+            7200\\6000
+        \end{bmatrix}
+        \begin{bmatrix}
+            x_1 \\ x_3
+        \end{bmatrix}=\begin{bmatrix}
+            3/7 & -1/7\\ 
+            -2/7 & 3&7
+        \end{bmatrix}\begin{bmatrix}
+            7200\\6000
+        \end{bmatrix}\\ 
+        \begin{bmatrix}
+            x_1 \\ x_3
+        \end{bmatrix} = \begin{bmatrix}
+            15600/7 \\ 3600/7
+        \end{bmatrix}
+    \end{align}
+\end{subequations}
+The last point is not feasible, as $x_3$ is not bigger or equal to 0.
+\begin{subequations}
+    \begin{align}
+        \begin{bmatrix}
+            2 & 1 \\ 
+            2 & 3
+        \end{bmatrix}\begin{bmatrix}
+            x_2 \\ x_3
+        \end{bmatrix} = \begin{bmatrix}
+            7200\\6000
+        \end{bmatrix}\\ 
+        \begin{bmatrix}
+            x_2\\x_3
+        \end{bmatrix}=\frac{1}{4}\begin{bmatrix}
+            3 & -1 \\ 
+            -2 & 2
+        \end{bmatrix}\begin{bmatrix}
+            7200\\6000
+        \end{bmatrix}\\ 
+        \begin{bmatrix}
+            x_2\\x_3
+        \end{bmatrix}=\begin{bmatrix}
+            3900\\-600
+        \end{bmatrix}
+    \end{align}
+\end{subequations}
+
+\subsection{2c}
+We look at the KKT condition $A^T \lambda + s = -c$ for the first and last point.
+For the first point, to fullfill the condition $xs = 0, s=[0,0,s_3]$
+\begin{subequations}
+    \begin{align}
+        \begin{bmatrix}
+            3 & 2\\
+            2 & 2 \\ 
+            1 & 3
+        \end{bmatrix}\begin{bmatrix}
+            \lambda_1 \\ \lambda_2
+        \end{bmatrix} + \begin{bmatrix}
+            0 \\ 0 \\ s_3
+        \end{bmatrix}=-\begin{bmatrix}
+            100\\75\\55
+        \end{bmatrix}\\
+        \begin{bmatrix}
+            3\lambda_1+2\lambda_2\\ 
+            2\lambda_1+2\lambda_2 \\ 
+            \lambda_1+3\lambda_2+s_3
+        \end{bmatrix}= -\begin{bmatrix}
+            100\\75\\55
+        \end{bmatrix}
+    \end{align}
+\end{subequations}
+Solving for lambda first:
+\begin{subequations}
+    \begin{align}
+        \begin{bmatrix}
+            \lambda_1 \\ \lambda_2
+        \end{bmatrix}=-\begin{bmatrix}
+            1 & -1 \\ 
+            -1 & 3/2
+        \end{bmatrix}\begin{bmatrix}
+            100\\75
+        \end{bmatrix}=\begin{bmatrix}
+            -25\\-12.5
+        \end{bmatrix} \\ 
+        s_3 = -55+25+3*12.5 = 7.5 \geq 0
+    \end{align}
+\end{subequations}
+
+Because for the other point we get $s_2 \leq 0$, the point with $s_3$ gives the optimal point.
+Which is:
+\begin{subequations}
+    \begin{align}
+        x^* = \begin{bmatrix}
+            1200\\1800\\0
+        \end{bmatrix}\\ 
+        -c^T x^* = -\begin{bmatrix}
+            100 & 75 & 55
+        \end{bmatrix}\begin{bmatrix}
+            1200\\1800\\0
+        \end{bmatrix}=-255000 NOK
+    \end{align}
+\end{subequations}
+
+\subsection{2d}
+The dual problem can be written as:
+\begin{equation}
+    \max{b^T \lambda} s.t. A^T \lambda \leq c
+\end{equation}
+
+\subsection{2e}
+\begin{subequations}
+    \begin{align}
+        c^T x^* = (A^T \lambda^* + s)^Tx^* , from 2b \\ 
+        \lambda^{*T} Ax^* + s^T x^* = \lambda^{*T} Ax^*, from 2f \\ 
+        \lambda^{*T} Ax^* = \lambda^{*T} b = b^T \lambda^*, from 2c
+    \end{align}
+\end{subequations}
